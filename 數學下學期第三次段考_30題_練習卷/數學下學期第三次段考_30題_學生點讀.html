@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數學科七年級下學期第三次段考複習卷</title>
+    <!-- 引入 Google Fonts LXGW WenKai TC 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- 引入 KaTeX 數學公式渲染引擎 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #faf7f0;
+            --container-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #4b5563;
+            --primary-color: #0f766e; /* 松石綠 */
+            --primary-hover: #115e59;
+            --accent-color: #b45309; /* 琥珀色 */
+            --border-color: #d1d5db;
+            --highlight-color: #fef08a; /* 黃色高亮 */
+            --dotted-underline: #3b82f6; /* 藍色虛線 */
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #111827;
+            --container-bg: #1f2937;
+            --text-color: #f9fafb;
+            --text-secondary: #d1d5db;
+            --primary-color: #14b8a6;
+            --primary-hover: #2dd4bf;
+            --accent-color: #f59e0b;
+            --border-color: #4b5563;
+            --highlight-color: #854d0e;
+            --dotted-underline: #60a5fa;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            font-size: 12pt;
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* 工具列 */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--container-bg);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toolbar label {
+            font-size: 9.5pt;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .toolbar select, .toolbar input[type="range"], .toolbar button {
+            font-family: 'Inter', var(--font-family);
+            font-size: 9.5pt;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .toolbar button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 500;
+        }
+
+        .toolbar button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .toolbar button.btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .toolbar button.btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .toolbar input[type="range"] {
+            width: 80px;
+        }
+
+        /* 試卷表頭 */
+        .exam-header {
+            text-align: center;
+            border-bottom: 3px double var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .exam-title {
+            font-size: 20pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            font-size: 11pt;
+            color: var(--text-secondary);
+        }
+
+        .student-info span {
+            margin: 5px 10px;
+        }
+
+        .underline-input {
+            border-bottom: 1px solid var(--text-color);
+            display: inline-block;
+            width: 80px;
+            text-align: center;
+        }
+
+        /* 統計表格 */
+        .math-table {
+            width: 100%;
+            max-width: 500px;
+            margin: 15px 0;
+            border-collapse: collapse;
+            font-size: 11pt;
+        }
+
+        .math-table th, .math-table td {
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .math-table th {
+            background-color: rgba(15, 118, 110, 0.1);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 大題標題 */
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 6px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* 題目列表 */
+        .question-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .question-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-weight: 500;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        /* 選擇題選項 */
+        .options-list {
+            list-style-type: none;
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+
+        .option-item {
+            margin-bottom: 4px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            background-color: rgba(15, 118, 110, 0.05);
+        }
+
+        /* 填空題作答線 */
+        .blank-line {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 1px solid var(--text-color);
+            margin: 0 5px;
+            text-align: center;
+        }
+
+        /* 點讀樣式 */
+        .read-sentence {
+            cursor: pointer;
+            position: relative;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+
+        .read-sentence:hover {
+            border-bottom: 2px dashed var(--dotted-underline);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .speaking-highlight {
+            background-color: var(--highlight-color) !important;
+            color: black !important;
+            box-shadow: 0 0 5px var(--highlight-color);
+        }
+
+        .speaker-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            margin-left: 6px;
+            vertical-align: middle;
+            color: var(--primary-color);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .speaker-icon:hover {
+            opacity: 1;
+        }
+
+        .speaker-icon svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* 答案與解析 */
+        .answers-section {
+            margin-top: 35px;
+            padding: 25px;
+            background-color: rgba(180, 83, 9, 0.05);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .answers-title {
+            font-size: 15pt;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .answer-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .answer-item:last-child {
+            border-bottom: none;
+        }
+
+        .answer-label {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .explanation {
+            font-size: 11pt;
+            color: var(--text-secondary);
+            margin-top: 3px;
+        }
+
+        /* 底部按鈕 */
+        .footer-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-large {
+            padding: 10px 25px;
+            font-size: 11pt;
+            font-weight: bold;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(180, 83, 9, 0.1);
+        }
+
+        .btn-large:hover {
+            background-color: #92400e;
+        }
+
+        /* ASCII Art Block */
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.1;
+            font-size: 10pt;
+            margin: 10px 0;
+            background: rgba(0,0,0,0.03);
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* 列印樣式最佳化 */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .toolbar, .footer-controls, .speaker-icon, .theme-toggle {
+                display: none !important;
+            }
+
+            .read-sentence {
+                border-bottom: none !important;
+                background-color: transparent !important;
+                cursor: default !important;
+            }
+
+            .option-item:hover {
+                background-color: transparent !important;
+            }
+
+            .section-title {
+                color: #000000 !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+
+            .exam-title {
+                color: #000000 !important;
+            }
+
+            .exam-header {
+                border-bottom: 3px double #000000 !important;
+            }
+
+            .answers-section {
+                page-break-before: always;
+                background-color: transparent !important;
+                border: 1px solid #000000 !important;
+                border-left: 4px solid #000000 !important;
+            }
+
+            .answers-title {
+                color: #000000 !important;
+            }
+
+            .answer-label {
+                color: #000000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 頂部工具列 -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button onclick="readAll()" id="read-all-btn">🔊 朗讀整份考卷</button>
+            <button onclick="stopSpeaking()" class="btn-secondary">⏹️ 停止</button>
+            <button onclick="pauseSpeaking()" class="btn-secondary">⏸️ 暫停</button>
+            <button onclick="resumeSpeaking()" class="btn-secondary">▶️ 繼續</button>
+        </div>
+        <div class="toolbar-group">
+            <label for="voice-select">語音角色：</label>
+            <select id="voice-select" onchange="stopSpeaking()"></select>
+        </div>
+        <div class="toolbar-group">
+            <label for="rate-slider">語速：</label>
+            <input type="range" id="rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" onchange="stopSpeaking()">
+            <span id="rate-value" style="font-size: 9pt; font-family: Inter;">1.0x</span>
+        </div>
+        <button onclick="toggleTheme()" class="btn-secondary theme-toggle">🌓 切換主題</button>
+    </div>
+
+    <!-- 考卷抬頭 -->
+    <div class="exam-header">
+        <h1 class="exam-title">數學科七年級下學期第三次段考複習卷</h1>
+        <div class="student-info">
+            <span>班級：<span class="underline-input"></span></span>
+            <span>座號：<span class="underline-input"></span></span>
+            <span>姓名：<span class="underline-input"></span></span>
+            <span>得分：<span class="underline-input"></span></span>
+        </div>
+    </div>
+
+    <!-- 一、單一選擇題 -->
+    <div class="section-title">一、單一選擇題 (每題 3 分，共 60 分)</div>
+    <ul class="question-list">
+        
+        <!-- Q1 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第一題：將「愛克司 的 3 倍加 5 不超過 14」列出不等式，下列何者正確？" onclick="speakSentence(this, event)">1. 將「\(x\) 的 3 倍加 5 不超過 14」列出不等式，下列何者正確？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，3 愛克司 加 5 小於 14" onclick="speakSentence(this, event)">(A) \(3x + 5 < 14\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，3 愛克司 加 5 小於等於 14" onclick="speakSentence(this, event)">(B) \(3x + 5 \le 14\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，3 愛克司 加 5 大於 14" onclick="speakSentence(this, event)">(C) \(3x + 5 > 14\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，3 愛克司 加 5 大於等於 14" onclick="speakSentence(this, event)">(D) \(3x + 5 \ge 14\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q2 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第二題：若 愛克司 為整數，且 2 愛克司 減 3 大於 7，則 愛克司 的最小可能值為多少？" onclick="speakSentence(this, event)">2. 若 \(x\) 為整數，且 \(2x - 3 > 7\)，則 \(x\) 的最小可能值為多少？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 5</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 6</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 7</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 8</span></li>
+            </ul>
+        </li>
+
+        <!-- Q3 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第三題：下列哪一個圖示表示不等式 愛克司 大於等於 負2 在數線上的解？" onclick="speakSentence(this, event)">3. 下列哪一個圖示表示不等式 \(x \ge -2\) 在數線上的解？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，在 負2 位置畫空心圓點，並畫向右的箭頭" onclick="speakSentence(this, event)">(A) 在 -2 位置畫空心圓點，並畫向右的箭頭</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，在 負2 位置畫實心圓點，並畫向右的箭頭" onclick="speakSentence(this, event)">(B) 在 -2 位置畫實心圓點，並畫向右的箭頭</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，在 負2 位置畫實心圓點，並畫向左的箭頭" onclick="speakSentence(this, event)">(C) 在 -2 位置畫實心圓點，並畫向左的箭頭</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，在 負2 位置畫空心圓點，並畫向左的箭頭" onclick="speakSentence(this, event)">(D) 在 -2 位置畫空心圓點，並畫向左的箭頭</span></li>
+            </ul>
+        </li>
+
+        <!-- Q4 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第四題：下列哪一個數是不等式 4 愛克司 減 7 小於 5 的解？" onclick="speakSentence(this, event)">4. 下列哪一個數是不等式 \(4x - 7 < 5\) 的解？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 3</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 4</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 2</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 5</span></li>
+            </ul>
+        </li>
+
+        <!-- Q5 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第五題：解不等式 3 愛克司 減 4 小於等於 5 愛克司 加 6，可得 愛克司 的範圍為何？" onclick="speakSentence(this, event)">5. 解不等式 \(3x - 4 \le 5x + 6\)，可得 \(x\) 的範圍為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，愛克司 大於等於 負5" onclick="speakSentence(this, event)">(A) \(x \ge -5\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，愛克司 小於等於 負5" onclick="speakSentence(this, event)">(B) \(x \le -5\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，愛克司 大於等於 5" onclick="speakSentence(this, event)">(C) \(x \ge 5\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，愛克司 小於等於 5" onclick="speakSentence(this, event)">(D) \(x \le 5\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q6 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第六題：解不等式 2 乘以括號 愛克司 減 3 大於 5 愛克司 加 3，可得 愛克司 的範圍為何？" onclick="speakSentence(this, event)">6. 解不等式 \(2(x - 3) > 5x + 3\)，可得 \(x\) 的範圍為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，愛克司 小於 負3" onclick="speakSentence(this, event)">(A) \(x < -3\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，愛克司 大於 負3" onclick="speakSentence(this, event)">(B) \(x > -3\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，愛克司 小於 3" onclick="speakSentence(this, event)">(C) \(x < 3\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，愛克司 大於 3" onclick="speakSentence(this, event)">(D) \(x > 3\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q7 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第七題：解不等式 三分之 愛克司 減 1 減去 四分之 2 愛克司 加 1 大於等於 1，可得其解為何？" onclick="speakSentence(this, event)">7. 解不等式 \(\frac{x - 1}{3} - \frac{2x + 1}{4} \ge 1\)，可得其解為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，愛克司 大於等於 負二分之十九" onclick="speakSentence(this, event)">(A) \(x \ge -\frac{19}{2}\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，愛克司 小於等於 負二分之十九" onclick="speakSentence(this, event)">(B) \(x \le -\frac{19}{2}\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，愛克司 大於等於 負二分之十七" onclick="speakSentence(this, event)">(C) \(x \ge -\frac{17}{2}\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，愛克司 小於等於 負二分之十七" onclick="speakSentence(this, event)">(D) \(x \le -\frac{17}{2}\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q8 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第八題：宏仁與媽媽上市場買了每包 60 元的餅乾 愛克司 包，以及一盒 250 元的巧克力，且總花費不小於 500 元。依據題意可列出不等式為何？" onclick="speakSentence(this, event)">8. 宏仁與媽媽上市場買了每包 60 元的餅乾 \(x\) 包，以及一盒 250 元的巧克力，且總花費不小於 500 元。依據題意可列出不等式為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，60 愛克司 加 250 大於 500" onclick="speakSentence(this, event)">(A) \(60x + 250 > 500\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，60 愛克司 加 250 大於等於 500" onclick="speakSentence(this, event)">(B) \(60x + 250 \ge 500\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，60 愛克司 加 250 小於 500" onclick="speakSentence(this, event)">(C) \(60x + 250 < 500\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，60 愛克司 加 250 小於等於 500" onclick="speakSentence(this, event)">(D) \(60x + 250 \le 500\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q9 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第九題：已知 欸 大於 逼。若 西 是一個負數，則下列哪一個不等式是錯誤的？" onclick="speakSentence(this, event)">9. 已知 \(a > b\)。若 \(c\) 是一個負數，則下列哪一個不等式是錯誤的？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="A選項，欸加西大於逼加西" onclick="speakSentence(this, event)">(A) \(a + c > b + c\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="B選項，欸減西大於逼減西" onclick="speakSentence(this, event)">(B) \(a - c > b - c\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="C選項，欸乘以西大於逼乘以西" onclick="speakSentence(this, event)">(C) \(a \cdot c > b \cdot c\)</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" data-read-text="D選項，西分之欸小於西分之逼" onclick="speakSentence(this, event)">(D) \(a/c < b/c\)</span></li>
+            </ul>
+        </li>
+
+        <!-- Q10 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">10. 某遊樂區的門票規定：20 人以上的團體，門票打八折。如果有一組團體人數不足 20 人，但以 20 人團體票買票反而比較便宜，則此團體至少有多少人？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 15</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 16</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 17</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 18</span></li>
+            </ul>
+        </li>
+
+        <!-- Q11 -->
+        <li class="question-item">
+            <div class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">11. 下表是大正國中調查某班 40 位學生視力的列聯表。若已知近視的男生有 12 人，無近視的女生有 8 人，無近視的男生有 10 人。請問「近視」的女生有多少人？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </div>
+            <table class="math-table">
+                <thead>
+                    <tr>
+                        <th>性別 \ 視力</th>
+                        <th>近視</th>
+                        <th>無近視</th>
+                        <th>合計</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>男</th>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <th>女</th>
+                        <td>？</td>
+                        <td>8</td>
+                        <td>？</td>
+                    </tr>
+                    <tr>
+                        <th>合計</th>
+                        <td>？</td>
+                        <td>18</td>
+                        <td>40</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 8</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 10</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 12</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 14</span></li>
+            </ul>
+        </li>
+
+        <!-- Q12 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">12. 有一組資料共有 6 個數：4、8、15、16、23、42。這組資料的中位數是多少？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 15</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 15.5</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 16</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 19</span></li>
+            </ul>
+        </li>
+
+        <!-- Q13 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">13. 計算數值 5、8、12、15、20 的平均數為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 11</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 12</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 13</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 14</span></li>
+            </ul>
+        </li>
+
+        <!-- Q14 -->
+        <li class="question-item">
+            <div class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">14. 下表是珮茹班上 20 位同學的體重次數分配表。請問體重在 55 公斤（含）以上的學生佔全班人數的百分之幾？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </div>
+            <table class="math-table">
+                <thead>
+                    <tr>
+                        <th>體重 (公斤)</th>
+                        <th>次數 (人)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>50 ~ 55</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>55 ~ 60</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>60 ~ 65</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>合計</th>
+                        <td>20</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 35%</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 40%</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 75%</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 60%</span></li>
+            </ul>
+        </li>
+
+        <!-- Q15 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">15. 一組數據：12、15、12、18、15、12、20、18。這組數據的眾數為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 12</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 15</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 18</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 20</span></li>
+            </ul>
+        </li>
+
+        <!-- Q16 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">16. 關於線對稱圖形，下列哪一個敘述是**錯誤**的？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 對稱軸垂直平分兩個對稱點的連線段</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 對稱角大小相等</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 對稱線段長度等長</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 正方形只有 2 條對稱軸</span></li>
+            </ul>
+        </li>
+
+        <!-- Q17 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第十七題：等腰三角形 ABC 中，線段 AB 等於線段 AC。若頂角 A 等於 80度，則底角 B 是多少度？" onclick="speakSentence(this, event)">17. 等腰三角形 ABC 中，\(AB = AC\)。若頂角 \(\angle A = 80^\circ\)，則底角 \(\angle B\) 是多少度？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 50°</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 60°</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 70°</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 80°</span></li>
+            </ul>
+        </li>
+
+        <!-- Q18 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">18. 下列哪一個圖形**不是**線對稱圖形？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 正三角形</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 平行四邊形</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 等腰梯形</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 圓形</span></li>
+            </ul>
+        </li>
+
+        <!-- Q19 -->
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" data-read-text="第十九題：已知正三角形有 欸 條對稱軸，正五邊形有 逼 條對稱軸，箏形有 西 條對稱軸。則 欸加逼加西 等於多少？" onclick="speakSentence(this, event)">19. 已知正三角形有 \(a\) 條對稱軸，正五邊形有 \(b\) 條對稱軸，箏形有 \(c\) 條對稱軸。則 \(a + b + c = \) ？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 8</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 9</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 10</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 11</span></li>
+            </ul>
+        </li>
+
+        <!-- Q20 -->
+        <li class="question-item">
+            <div class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">20. 右圖是用 6 個大小相同的正方體積木堆成的立體圖形。底層有 4 個積木呈 2x2 排列，第二層在左前與右後上方各放有 1 個積木。請問從正上方往下看所得的「上視圖」為下列何者？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </div>
+            <div style="margin-left: 20px;">
+                <div class="ascii-art">
+  第二層：       底層：
+  [1][0]        [1][1]
+  [0][1]        [1][1]
+                </div>
+            </div>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 四個正方形排成 2x2 的正方形</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 三個正方形排成 L 型</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 三個正方形排成 1x3 的長方形</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 六個正方形排成 2x3 的長方形</span></li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <!-- 二、填充題 -->
+    <div class="section-title">二、填充題 (每題 4 分，共 40 分)</div>
+    <ul class="question-list">
+        
+        <!-- Q21 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十一題：不等式 負3 愛克司 大於等於 12 的解為" onclick="speakSentence(this, event)">21. 不等式 \(-3x \ge 12\) 的解為</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q22 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十二題：滿足不等式 負2 小於 3 愛克司 加 1 小於等於 10 的所有整數解 愛克司 的和為" onclick="speakSentence(this, event)">22. 滿足不等式 \(-2 < 3x + 1 \le 10\) 的所有整數解 \(x\) 的和為</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q23 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十三題：若不等式 欸 乘以 愛克司 加 5 大於 2 的解為 愛克司 小於 負3，則 欸 的值為" onclick="speakSentence(this, event)">23. 若不等式 \(ax + 5 > 2\) 的解為 \(x < -3\)，則 \(a\) 的值為</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q24 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十四題：解不等式 0.4 愛克司 減 1.2 小於 0.6 愛克司 加 0.8，可得其解為" onclick="speakSentence(this, event)">24. 解不等式 \(0.4x - 1.2 < 0.6x + 0.8\)，可得其解為</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q25 -->
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">25. 某水果店蘋果每顆 35 元，水梨每顆 50 元。小明拿了 500 元去買這兩種水果，且水梨比蘋果多買了 3 顆。請問小明最多可以買到幾顆蘋果？答：最多可買到</span>
+            <div class="blank-line"></div>顆蘋果。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q26 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十六題：某班 5 位同學的數學小考成績分別為：80、75、愛克司、90、85 分。若已知這 5 位學生的平均成績是 84 分，則 愛克司 =" onclick="speakSentence(this, event)">26. 某班 5 位同學的數學小考成績分別為：80、75、\(x\)、90、85 分。若已知這 5 位學生的平均成績是 84 分，則 \(x =\)</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q27 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十七題：若一組數據由小到大排列為 2、3、5、7、愛克司、12、15、18。已知此組數據的中位數是 8.5，則 愛克司 =" onclick="speakSentence(this, event)">27. 若一組數據由小到大排列為 2、3、5、7、\(x\)、12、15、18。已知此組數據的中位數是 8.5，則 \(x =\)</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q28 -->
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">28. 承第 11 題，此班級中視力「不良」（即近視）的總人數為</span>
+            <div class="blank-line"></div>人。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q29 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第二十九題：三角形 ABC 中，底邊 BC 等於 16 公分，對稱軸 L 為 BC 的中垂線，且頂點 A 到底邊 BC 的垂直距離為 10 公分。則三角形 ABC 的面積為" onclick="speakSentence(this, event)">29. \(\triangle ABC\) 中，底邊 \(BC = 16\) 公分，對稱軸 \(L\) 為 \(BC\) 的中垂線，且頂點 \(A\) 到底邊 \(BC\) 的垂直距離為 10 公分。則三角形 \(ABC\) 的面積為</span>
+            <div class="blank-line"></div>平方公分。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+        <!-- Q30 -->
+        <li class="question-item">
+            <span class="read-sentence" data-read-text="第三十題：在等腰三角形 ABC 中，線段 AB 等於線段 AC。線段 AD 為底邊 BC 上的高。若 BC 等於 12，且三角形 ABC 的面積為 48，則對稱邊 腰長 AB 的長度為" onclick="speakSentence(this, event)">30. 在等腰三角形 \(ABC\) 中，\(AB = AC\)。\(AD\) 為底邊 \(BC\) 上的高。若 \(BC = 12\)，且三角形 \(ABC\) 的面積為 48，則對稱邊（腰長）\(AB\) 的長度為</span>
+            <div class="blank-line"></div>。
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+
+    </ul>
+
+    <!-- 顯示答案按鈕 -->
+    <div class="footer-controls">
+        <button id="toggle-answers-btn" class="btn-large" onclick="toggleAnswers()">顯示答案與詳細解析</button>
+    </div>
+
+    <!-- 答案與解析區 -->
+    <div id="answers-section" class="answers-section" style="display: none;">
+        <h2 class="answers-title">💡 答案與詳細解析</h2>
+        
+        <div class="answer-item">
+            <span class="answer-label">一、單一選擇題</span>
+            <p>1. 答案：<b>(B) \(3x + 5 \le 14\)</b><br><span class="explanation">解析：\(x\) 的 3 倍為 \(3x\)，加上 5 為 \(3x + 5\)；「不超過」代表小於或等於（\(\le\)），故列式為 \(3x + 5 \le 14\)。</span></p>
+            <p>2. 答案：<b>(B) 6</b><br><span class="explanation">解析：\(2x - 3 > 7 \implies 2x > 10 \implies x > 5\)。因為 \(x\) 為整數且必須大於 5，因此 \(x\) 的最小可能整數值為 6。</span></p>
+            <p>3. 答案：<b>(B) 在 -2 位置畫實心圓點，並畫向右的箭頭</b><br><span class="explanation">解析：不等號包含等號（\(\ge\)）時在數線上要畫實心圓點；「大於等於」代表包含比 -2 大的數，因此箭頭向右。</span></p>
+            <p>4. 答案：<b>(C) 2</b><br><span class="explanation">解析：\(4x - 7 < 5 \implies 4x < 12 \implies x < 3\)。選項中只有 (C) 2 小於 3，故 2 是該不等式的解。</span></p>
+            <p>5. 答案：<b>(A) \(x \ge -5\)</b><br><span class="explanation">解析：\(3x - 4 \le 5x + 6 \implies 3x - 5x \le 6 + 4 \implies -2x \le 10\)。兩邊同除以負數 -2 時，不等號方向要反轉，得 \(x \ge -5\)。</span></p>
+            <p>6. 答案：<b>(A) \(x < -3\)</b><br><span class="explanation">解析：\(2(x - 3) > 5x + 3 \implies 2x - 6 > 5x + 3 \implies 2x - 5x > 3 + 6 \implies -3x > 9 \implies x < -3\) (兩邊同除以 -3，不等號反轉)。</span></p>
+            <p>7. 答案：<b>(B) \(x \le -\frac{19}{2}\)</b><br><span class="explanation">解析：同乘 12 去分母：\(4(x - 1) - 3(2x + 1) \ge 12 \implies 4x - 4 - 6x - 3 \ge 12 \implies -2x - 7 \ge 12 \implies -2x \ge 19 \implies x \le -\frac{19}{2}\) (同除以 -2，不等號反轉)。</span></p>
+            <p>8. 答案：<b>(B) \(60x + 250 \ge 500\)</b><br><span class="explanation">解析：餅乾花費為 \(60x\)，巧克力 250 元，總花費為 \(60x + 250\)；「不小於」代表大於或等於（\(\ge\)），故列式為 \(60x + 250 \ge 500\)。</span></p>
+            <p>9. 答案：<b>(C) \(a \cdot c > b \cdot c\)</b><br><span class="explanation">解析：同加減任意數不等號方向不變；同乘除正數方向不變；同乘除負數時不等號方向必須反轉。因為 \(c < 0\) 是負數，故 \(a \cdot c\) 應小於 \(b \cdot c\)，(C) 敘述為錯。</span></p>
+            <p>10. 答案：<b>(C) 17</b><br><span class="explanation">解析：設人數為 \(x\) 人 (\(x < 20\))。原票價為 \(px\)，買20人團體票為 \(p \cdot 20 \cdot 0.8 = 16p\)。依題意 \(px > 16p \implies x > 16\)。因此人數至少要 17 人買團體票才會比較便宜。</span></p>
+            <p>11. 答案：<b>(B) 10</b><br><span class="explanation">解析：全班 40 人。男生有 \(12 + 10 = 22\) 人，因此女生有 \(40 - 22 = 18\) 人。女生的無近視有 8 人，故近視的女生有 \(18 - 8 = 10\) 人。</span></p>
+            <p>12. 答案：<b>(B) 15.5</b><br><span class="explanation">解析：共有 6 筆數據（偶數筆），中位數為排序後中間兩筆數據（第3、第4筆，即 15 與 16）的平均數。中位數 = \((15 + 16) / 2 = 15.5\)。</span></p>
+            <p>13. 答案：<b>(B) 12</b><br><span class="explanation">解析：平均數 = \((5 + 8 + 12 + 15 + 20) / 5 = 60 / 5 = 12\)。</span></p>
+            <p>14. 答案：<b>(C) 75%</b><br><span class="explanation">解析：55 公斤以上的區間為 55 ~ 60 公斤 (8人) 與 60 ~ 65 公斤 (7人)，共 \(8 + 7 = 15\) 人。佔全班比例為 \(15 / 20 = 75\%\)。</span></p>
+            <p>15. 答案：<b>(A) 12</b><br><span class="explanation">解析：各數值出現次數：12 出現 3 次；15 出現 2 次；18 出現 2 次；20 出現 1 次。出現次數最多的是 12，故眾數為 12。</span></p>
+            <p>16. 答案：<b>(D) 正方形只有 2 條對稱軸</b><br><span class="explanation">解析：正方形為正四邊形，其對稱軸共有 4 條（兩對角線與兩組對邊中點連線段），故 (D) 錯誤。</span></p>
+            <p>17. 答案：<b>(A) 50°</b><br><span class="explanation">解析：等腰三角形兩底角相等。底角 \(\angle B = (180^\circ - \text{頂角 } \angle A) / 2 = (180^\circ - 80^\circ) / 2 = 50^\circ\)。</span></p>
+            <p>18. 答案：<b>(B) 平行四邊形</b><br><span class="explanation">解析：一般平行四邊形沿任意直線對摺後兩側圖形皆無法完全重疊，因此不屬於線對稱圖形（它是點對稱圖形）。</span></p>
+            <p>19. 答案：<b>(B) 9</b><br><span class="explanation">解析：正三角形有 \(a = 3\) 條對稱軸；正五邊形有 \(b = 5\) 條對稱軸；箏形有 \(c = 1\) 條對稱軸。則 \(a + b + c = 3 + 5 + 1 = 9\)。</span></p>
+            <p>20. 答案：<b>(A) 四個正方形排成 2x2 的正方形</b><br><span class="explanation">解析：從正上方看（上視圖），底層的 2x2 排列會完全被投影出來。雖然第二層有積木，但它們重疊在底層積木上方，不改變投影的外形輪廓，所以上視圖仍是 2x2 的正方形。</span></p>
+        </div>
+
+        <div class="answer-item">
+            <span class="answer-label">二、填充題</span>
+            <p>21. 答案：<b>\(x \le -4\)</b><br><span class="explanation">解析：\(-3x \ge 12 \implies\) 兩邊同除以 -3 (不等號方向要反轉) \(\implies x \le -4\)。</span></p>
+            <p>22. 答案：<b>6</b><br><span class="explanation">解析：\(-2 < 3x + 1 \le 10 \implies\) 各減 1 得 \(-3 < 3x \le 9 \implies\) 各除以 3 得 \(-1 < x \le 3\)。整數解 \(x\) 可為 0, 1, 2, 3。其和為 \(0 + 1 + 2 + 3 = 6\)。</span></p>
+            <p>23. 答案：<b>-1</b><br><span class="explanation">解析：\(ax + 5 > 2 \implies ax > -3\)。因為解的方向由「大於」變為「小於」（\(x < -3\)），說明 \(a\) 為負數。兩邊同除以 \(a\) 得 \(x < -3/a\)。因此 \(-3/a = -3 \implies a = -1\)。</span></p>
+            <p>24. 答案：<b>\(x > -10\)</b><br><span class="explanation">解析：同乘 10 去除小數：\(4x - 12 < 6x + 8 \implies 4x - 6x < 8 + 12 \implies -2x < 20 \implies x > -10\) (同除以負數，不等號反轉)。</span></p>
+            <p>25. 答案：<b>4</b><br><span class="explanation">解析：設蘋果買 \(x\) 顆，水梨買 \(x + 3\) 顆。\(35x + 50(x + 3) \le 500 \implies 35x + 50x + 150 \le 500 \implies 85x \le 350 \implies x \le 4.11\)。因此蘋果最多只能買 4 顆。</span></p>
+            <p>26. 答案：<b>90</b><br><span class="explanation">解析：平均成績 = \((80 + 75 + x + 90 + 85) / 5 = 84 \implies 330 + x = 420 \implies x = 90\) 分。</span></p>
+            <p>27. 答案：<b>10</b><br><span class="explanation">解析：共有 8 筆數據，中位數為排序後第 4 筆與第 5 筆（即 7 與 \(x\)）的平均數。中位數 = \((7 + x) / 2 = 8.5 \implies 7 + x = 17 \implies x = 10\)。</span></p>
+            <p>28. 答案：<b>22</b><br><span class="explanation">解析：視力不良（近視）的男生有 12 人，女生有 10 人。故不良的總人數為 \(12 + 10 = 22\) 人。</span></p>
+            <p>29. 答案：<b>80</b><br><span class="explanation">解析：對稱軸 \(L\) 為底邊 \(BC\) 的中垂線，因此高即為頂點 \(A\) 到底邊的垂直距離 = 10 cm。三角形面積 = \(\frac{\text{底} \times \text{高}}{2} = \frac{16 \times 10}{2} = 80\) 平方公分。</span></p>
+            <p>30. 答案：<b>10</b><br><span class="explanation">解析：面積 = \(\frac{BC \times AD}{2} = 48 \implies \frac{12 \times AD}{2} = 48 \implies 6 \times AD = 48 \implies\) 高 \(AD = 8\)。等腰三角形的高會平分底邊，故 \(BD = 6\)。在直角三角形 ABD 中，斜邊 \(AB = \sqrt{AD^2 + BD^2} = \sqrt{8^2 + 6^2} = 10\)。</span></p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // 語音播放相關
+    let synth = window.speechSynthesis;
+    let currentUtterance = null;
+    let currentElement = null;
+    let voices = [];
+    
+    // 初始化語音角色選單
+    function populateVoiceList() {
+        if (typeof speechSynthesis === 'undefined') return;
+        voices = speechSynthesis.getVoices();
+        let voiceSelect = document.getElementById('voice-select');
+        let selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+        voiceSelect.innerHTML = '';
+        
+        let filteredVoices = voices.filter(v => v.lang.includes('zh') || v.lang.includes('en'));
+        if (filteredVoices.length === 0) {
+            filteredVoices = voices;
+        }
+        
+        filteredVoices.sort((a, b) => a.name.localeCompare(b.name));
+
+        filteredVoices.forEach((voice) => {
+            let option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.setAttribute('data-lang', voice.lang);
+            option.setAttribute('data-name', voice.name);
+            
+            if (voice.lang.includes('zh-TW') || voice.lang.includes('zh-HK')) {
+                if (voice.name.includes('Yating') || voice.name.includes('Hanhan') || voice.name.includes('HsiaoChen') || voice.name.includes('Microsoft')) {
+                    option.selected = true;
+                }
+            }
+            voiceSelect.appendChild(option);
+        });
+        
+        let rateSlider = document.getElementById('rate-slider');
+        let rateValue = document.getElementById('rate-value');
+        rateSlider.addEventListener('input', () => {
+            rateValue.textContent = rateSlider.value + 'x';
+        });
+    }
+
+    populateVoiceList();
+    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoiceList;
+    }
+
+    function stopSpeaking() {
+        if (synth) {
+            synth.cancel();
+        }
+        isReadingAll = false;
+        if (currentElement) {
+            currentElement.classList.remove('speaking-highlight');
+            currentElement = null;
+        }
+    }
+
+    function pauseSpeaking() {
+        if (synth && synth.speaking && !synth.paused) {
+            synth.pause();
+        }
+    }
+
+    function resumeSpeaking() {
+        if (synth && synth.paused) {
+            synth.resume();
+        }
+    }
+
+    // 朗讀單個句子
+    function speakSentence(element, event) {
+        if (event) {
+            event.stopPropagation();
+        }
+        stopSpeaking();
+        
+        // 優先讀取 data-read-text，這能避免讀取到 KaTeX 拼湊的碎音 DOM 結構
+        let text = element.getAttribute('data-read-text') || element.innerText || element.textContent;
+        
+        // 額外過濾底線 (＿＿) 與括號 ( (   ) ) 避免唸出 "blank"
+        text = text.replace(/[_＿]+/g, ' 空格 ').replace(/\(\s*\)/g, ' 括號 ').replace(/[()（）]/g, ' ');
+        
+        // 備用符號轉譯
+        text = text.replace(/<=/g, '小於等於')
+                   .replace(/>=/g, '大於等於')
+                   .replace(/</g, '小於')
+                   .replace(/>/g, '大於')
+                   .replace(/=/g, '等於')
+                   .replace(/\+/g, '加')
+                   .replace(/-/g, '減')
+                   .replace(/\*/g, '乘')
+                   .replace(/\//g, '分之')
+                   .replace(/%/g, '百分之')
+                   .replace(/cm/gi, '公分')
+                   .replace(/\bx\b/gi, '愛克司')
+                   .replace(/\ba\b/gi, '欸')
+                   .replace(/\bb\b/gi, '逼')
+                   .replace(/\bc\b/gi, '西');
+        
+        if (!text.trim()) return;
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        
+        let voiceSelect = document.getElementById('voice-select');
+        if (voiceSelect && voiceSelect.value) {
+            let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+            let selectedName = selectedOption.getAttribute('data-name');
+            let selectedVoice = voices.find(v => v.name === selectedName);
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+        }
+        
+        let rateSlider = document.getElementById('rate-slider');
+        if (rateSlider) {
+            utterance.rate = parseFloat(rateSlider.value);
+        }
+        
+        currentElement = element;
+        currentElement.classList.add('speaking-highlight');
+        
+        utterance.onend = function() {
+            if (currentElement === element) {
+                element.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+        };
+        
+        utterance.onerror = function() {
+            if (currentElement === element) {
+                element.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+        };
+        
+        currentUtterance = utterance;
+        synth.speak(utterance);
+    }
+
+    // 朗讀大題或特定題目的所有可點讀句子
+    function speakQuestion(btn) {
+        stopSpeaking();
+        let questionItem = btn.closest('.question-item');
+        if (!questionItem) return;
+        
+        let sentences = Array.from(questionItem.querySelectorAll('.read-sentence'));
+        if (sentences.length === 0) return;
+        
+        let idx = 0;
+        function playNext() {
+            if (idx >= sentences.length) {
+                if (currentElement) {
+                    currentElement.classList.remove('speaking-highlight');
+                    currentElement = null;
+                }
+                return;
+            }
+            
+            let el = sentences[idx];
+            let text = el.getAttribute('data-read-text') || el.innerText || el.textContent;
+            text = text.replace(/[_＿]+/g, ' 空格 ').replace(/\(\s*\)/g, ' 括號 ').replace(/[()（）]/g, ' ');
+            text = text.replace(/<=/g, '小於等於')
+                       .replace(/>=/g, '大於等於')
+                       .replace(/</g, '小於')
+                       .replace(/>/g, '大於')
+                       .replace(/=/g, '等於')
+                       .replace(/\+/g, '加')
+                       .replace(/-/g, '減')
+                       .replace(/\*/g, '乘')
+                       .replace(/\//g, '分之')
+                       .replace(/%/g, '百分之')
+                       .replace(/cm/gi, '公分')
+                       .replace(/\bx\b/gi, '愛克司')
+                       .replace(/\ba\b/gi, '欸')
+                       .replace(/\bb\b/gi, '逼')
+                       .replace(/\bc\b/gi, '西');
+            
+            if (!text.trim()) {
+                idx++;
+                playNext();
+                return;
+            }
+            
+            let utterance = new SpeechSynthesisUtterance(text);
+            
+            let voiceSelect = document.getElementById('voice-select');
+            if (voiceSelect && voiceSelect.value) {
+                let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+                let selectedName = selectedOption.getAttribute('data-name');
+                let selectedVoice = voices.find(v => v.name === selectedName);
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+            }
+            
+            let rateSlider = document.getElementById('rate-slider');
+            if (rateSlider) {
+                utterance.rate = parseFloat(rateSlider.value);
+            }
+            
+            if (currentElement) {
+                currentElement.classList.remove('speaking-highlight');
+            }
+            currentElement = el;
+            currentElement.classList.add('speaking-highlight');
+            
+            utterance.onend = function() {
+                idx++;
+                playNext();
+            };
+            
+            utterance.onerror = function() {
+                idx++;
+                playNext();
+            };
+            
+            synth.speak(utterance);
+        }
+        
+        playNext();
+    }
+
+    // 朗讀整份考卷
+    let speakQueue = [];
+    let queueIndex = 0;
+    let isReadingAll = false;
+
+    function readAll() {
+        stopSpeaking();
+        isReadingAll = true;
+        
+        let allSentences = Array.from(document.querySelectorAll('.read-sentence'));
+        speakQueue = allSentences.filter(el => !el.closest('#answers-section'));
+        
+        queueIndex = 0;
+        speakNextInQueue();
+    }
+
+    function speakNextInQueue() {
+        if (!isReadingAll || queueIndex >= speakQueue.length) {
+            isReadingAll = false;
+            if (currentElement) {
+                currentElement.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+            return;
+        }
+        
+        let element = speakQueue[queueIndex];
+        let text = element.getAttribute('data-read-text') || element.innerText || element.textContent;
+        text = text.replace(/[_＿]+/g, ' 空格 ').replace(/\(\s*\)/g, ' 括號 ').replace(/[()（）]/g, ' ');
+        text = text.replace(/<=/g, '小於等於')
+                   .replace(/>=/g, '大於等於')
+                   .replace(/</g, '小於')
+                   .replace(/>/g, '大於')
+                   .replace(/=/g, '等於')
+                   .replace(/\+/g, '加')
+                   .replace(/-/g, '減')
+                   .replace(/\*/g, '乘')
+                   .replace(/\//g, '分之')
+                   .replace(/%/g, '百分之')
+                   .replace(/cm/gi, '公分')
+                   .replace(/\bx\b/gi, '愛克司')
+                   .replace(/\ba\b/gi, '欸')
+                   .replace(/\bb\b/gi, '逼')
+                   .replace(/\bc\b/gi, '西');
+        
+        if (!text.trim()) {
+            queueIndex++;
+            speakNextInQueue();
+            return;
+        }
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        
+        let voiceSelect = document.getElementById('voice-select');
+        if (voiceSelect && voiceSelect.value) {
+            let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+            let selectedName = selectedOption.getAttribute('data-name');
+            let selectedVoice = voices.find(v => v.name === selectedName);
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+        }
+        
+        let rateSlider = document.getElementById('rate-slider');
+        if (rateSlider) {
+            utterance.rate = parseFloat(rateSlider.value);
+        }
+        
+        if (currentElement) {
+            currentElement.classList.remove('speaking-highlight');
+        }
+        
+        currentElement = element;
+        currentElement.classList.add('speaking-highlight');
+        
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        utterance.onend = function() {
+            element.classList.remove('speaking-highlight');
+            queueIndex++;
+            speakNextInQueue();
+        };
+        
+        utterance.onerror = function() {
+            element.classList.remove('speaking-highlight');
+            queueIndex++;
+            speakNextInQueue();
+        };
+        
+        synth.speak(utterance);
+    }
+
+    // 選擇題選項點選
+    function selectOption(li) {
+        let parent = li.parentNode;
+        parent.querySelectorAll('.option-item').forEach(item => {
+            item.style.fontWeight = 'normal';
+            item.style.backgroundColor = 'transparent';
+        });
+        li.style.fontWeight = 'bold';
+        li.style.backgroundColor = 'rgba(15, 118, 110, 0.1)';
+    }
+
+    // 切換顯示答案與解析
+    function toggleAnswers() {
+        let ansDiv = document.getElementById('answers-section');
+        let btn = document.getElementById('toggle-answers-btn');
+        if (ansDiv.style.display === 'none') {
+            ansDiv.style.display = 'block';
+            btn.innerText = '隱藏答案與詳細解析';
+            btn.style.backgroundColor = '#4b5563';
+            ansDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            ansDiv.style.display = 'none';
+            btn.innerText = '顯示答案與詳細解析';
+            btn.style.backgroundColor = 'var(--accent-color)';
+        }
+    }
+
+    // 切換深淺色主題
+    function toggleTheme() {
+        let htmlEl = document.documentElement;
+        if (htmlEl.getAttribute('data-theme') === 'dark') {
+            htmlEl.removeAttribute('data-theme');
+        } else {
+            htmlEl.setAttribute('data-theme', 'dark');
+        }
+    }
+
+    // 確保 DOM 載入後且 KaTeX 載入完成後執行自動渲染
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ]
+        });
+    });
+</script>
+</body>
+</html>

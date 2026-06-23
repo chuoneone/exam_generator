@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國文科八年級練習卷：愛蓮說</title>
+    <!-- 引入 Google Fonts LXGW WenKai TC (霞鶩文楷) 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #faf7f0;
+            --container-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #4b5563;
+            --primary-color: #0f766e; /* 典雅深綠/松石綠 */
+            --primary-hover: #115e59;
+            --accent-color: #b45309; /* 溫暖琥珀色 */
+            --border-color: #e5e7eb;
+            --highlight-color: #fef08a; /* 黃色高亮 */
+            --dotted-underline: #3b82f6; /* 藍色虛線 */
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #111827;
+            --container-bg: #1f2937;
+            --text-color: #f9fafb;
+            --text-secondary: #d1d5db;
+            --primary-color: #14b8a6;
+            --primary-hover: #2dd4bf;
+            --accent-color: #f59e0b;
+            --border-color: #374151;
+            --highlight-color: #854d0e;
+            --dotted-underline: #60a5fa;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            font-size: 14pt;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* 頂部工具列 */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--container-bg);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toolbar label {
+            font-size: 10.5pt;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .toolbar select, .toolbar input[type="range"], .toolbar button {
+            font-family: 'Inter', var(--font-family);
+            font-size: 10.5pt;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .toolbar button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .toolbar button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .toolbar button.btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .toolbar button.btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .toolbar input[type="range"] {
+            width: 100px;
+            padding: 0;
+        }
+
+        /* 試卷表頭 */
+        .exam-header {
+            text-align: center;
+            border-bottom: 3px double var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .exam-title {
+            font-size: 22pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            font-size: 13pt;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .student-info span {
+            margin: 5px 15px;
+        }
+
+        .underline-input {
+            border-bottom: 1px solid var(--text-color);
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+        }
+
+        /* 閱讀材料區塊 */
+        .reading-section {
+            background-color: rgba(15, 118, 110, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 35px;
+        }
+
+        .reading-title {
+            font-size: 15pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reading-text {
+            font-size: 14pt;
+            letter-spacing: 0.05em;
+            text-align: justify;
+        }
+
+        /* 大題標題 */
+        .section-title {
+            font-size: 15pt;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        /* 題目列表 */
+        .question-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            margin-bottom: 12px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* 國字注音與注釋作答框 */
+        .answer-box {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 1px solid var(--text-color);
+            margin-left: 5px;
+            margin-right: 15px;
+            text-align: center;
+        }
+
+        .annotation-box {
+            display: inline-block;
+            width: 70%;
+            border-bottom: 1px solid var(--text-color);
+            margin-left: 5px;
+            vertical-align: bottom;
+        }
+
+        /* 選擇題選項 */
+        .options-list {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            margin-bottom: 6px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            background-color: rgba(15, 118, 110, 0.05);
+        }
+
+        /* 點讀特定樣式 */
+        .read-sentence {
+            cursor: pointer;
+            position: relative;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+
+        .read-sentence:hover {
+            border-bottom: 2px dashed var(--dotted-underline);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        /* 播放高亮 */
+        .speaking-highlight {
+            background-color: var(--highlight-color) !important;
+            color: black !important;
+            box-shadow: 0 0 5px var(--highlight-color);
+        }
+
+        /* 揚聲器小圖示 */
+        .speaker-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            margin-left: 6px;
+            vertical-align: middle;
+            color: var(--primary-color);
+            opacity: 0.6;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .speaker-icon:hover {
+            opacity: 1;
+        }
+
+        .speaker-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* 答案與解析區塊 */
+        .answers-section {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: rgba(180, 83, 9, 0.05);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .answers-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .answer-item {
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .answer-item:last-child {
+            border-bottom: none;
+        }
+
+        .answer-label {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .explanation {
+            font-size: 12.5pt;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* 控制按鈕區 */
+        .footer-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn-large {
+            padding: 12px 30px;
+            font-size: 13pt;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(180, 83, 9, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-large:hover {
+            background-color: #92400e;
+            transform: translateY(-1px);
+        }
+
+        /* 列印樣式最佳化 */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 14pt !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .toolbar, .footer-controls, .speaker-icon, .theme-toggle {
+                display: none !important;
+            }
+
+            .read-sentence {
+                border-bottom: none !important;
+                background-color: transparent !important;
+                cursor: default !important;
+            }
+
+            .option-item:hover {
+                background-color: transparent !important;
+            }
+
+            .reading-section {
+                background-color: transparent !important;
+                border-left: 3px solid #000000 !important;
+                padding: 10px 15px !important;
+            }
+
+            .section-title {
+                color: #000000 !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+
+            .exam-title {
+                color: #000000 !important;
+            }
+
+            .exam-header {
+                border-bottom: 3px double #000000 !important;
+            }
+
+            .answers-section {
+                page-break-before: always;
+                background-color: transparent !important;
+                border: 1px solid #000000 !important;
+                border-left: 4px solid #000000 !important;
+            }
+
+            .answers-title {
+                color: #000000 !important;
+            }
+
+            .answer-label {
+                color: #000000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 頂部工具列 -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button onclick="readAll()" id="read-all-btn">🔊 朗讀整份考卷</button>
+            <button onclick="stopSpeaking()" class="btn-secondary">⏹️ 停止</button>
+            <button onclick="pauseSpeaking()" class="btn-secondary">⏸️ 暫停</button>
+            <button onclick="resumeSpeaking()" class="btn-secondary">▶️ 繼續</button>
+        </div>
+        <div class="toolbar-group">
+            <label for="voice-select">語音角色：</label>
+            <select id="voice-select" onchange="stopSpeaking()"></select>
+        </div>
+        <div class="toolbar-group">
+            <label for="rate-slider">語速：</label>
+            <input type="range" id="rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" onchange="stopSpeaking()">
+            <span id="rate-value" style="font-size: 10pt; font-family: Inter;">1.0x</span>
+        </div>
+        <button onclick="toggleTheme()" class="btn-secondary theme-toggle">🌓 切換主題</button>
+    </div>
+
+    <!-- 考卷抬頭 -->
+    <div class="exam-header">
+        <h1 class="exam-title">國文科八年級第二學期第一次練習卷：愛蓮說</h1>
+        <div class="student-info">
+            <span>班級：<span class="underline-input"></span></span>
+            <span>座號：<span class="underline-input"></span></span>
+            <span>姓名：<span class="underline-input"></span></span>
+            <span>得分：<span class="underline-input"></span></span>
+        </div>
+    </div>
+
+    <!-- 課文閱讀區 -->
+    <div class="reading-section">
+        <div class="reading-title">
+            <span>📖 課文朗讀與點讀區</span>
+            <span class="speaker-icon" onclick="speakSectionText('reading-content-box')">
+                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </span>
+        </div>
+        <div class="reading-text" id="reading-content-box">
+            <span class="read-sentence" onclick="speakSentence(this, event)">水陸草木之花，可愛者甚蕃。</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">晉陶淵明獨愛菊。</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">自李唐來，世人甚愛牡丹。</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">予獨愛蓮之出淤泥而不染，</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">濯清漣而不妖；</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">中通外直，不蔓不枝；</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">香遠益清，亭亭淨植，</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">可遠觀而不可褻玩焉。</span>
+            <br><br>
+            <span class="read-sentence" onclick="speakSentence(this, event)">予謂：</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">菊，花之隱逸者也；</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">牡丹，花之富貴者也；</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">蓮，花之君子者也。</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">噫！</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">菊之愛，陶後鮮有聞。</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">蓮之愛，同予者何人？</span>
+            <span class="read-sentence" onclick="speakSentence(this, event)">牡丹之愛，宜乎眾矣！</span>
+        </div>
+    </div>
+
+    <!-- 一、國字注音 -->
+    <div class="section-title">一、國字注音 (每題 4 分，共 20 分)</div>
+    <ul class="question-list">
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">1. 周敦「頤」：</span>
+            <div class="answer-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">2. 「蕃」草木：</span>
+            <div class="answer-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">3. 出「淤」泥而不染：</span>
+            <div class="answer-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">4. 濯清「漣」而不妖：</span>
+            <div class="answer-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">5. 可遠觀而不可「褻」玩焉：</span>
+            <div class="answer-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+    </ul>
+
+    <!-- 二、字詞注釋 -->
+    <div class="section-title">二、字詞注釋 (每題 4 分，共 20 分)</div>
+    <ul class="question-list">
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">1. 甚蕃：</span>
+            <div class="annotation-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">2. 濯清漣：</span>
+            <div class="annotation-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">3. 不蔓不枝：</span>
+            <div class="annotation-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">4. 褻玩：</span>
+            <div class="annotation-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+        <li class="question-item">
+            <span class="read-sentence" onclick="speakSentence(this, event)">5. 鮮有聞：</span>
+            <div class="annotation-box"></div>
+            <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+        </li>
+    </ul>
+
+    <!-- 三、句子挖空選擇題 -->
+    <div class="section-title">三、句子挖空選擇題 (每題 5 分，共 20 分)</div>
+    <ul class="question-list">
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">1.「予獨愛蓮之出</span>＿＿＿＿<span class="read-sentence" onclick="speakSentence(this, event)">而不染，濯清漣而不妖」</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 淤泥</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 紅塵</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 汙水</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 沼澤</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">2.「中通外直，不</span>＿＿<span class="read-sentence" onclick="speakSentence(this, event)">不</span>＿＿<span class="read-sentence" onclick="speakSentence(this, event)">；香遠益清，亭亭淨植」</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 攀 / 附</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 蔓 / 枝</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 雜 / 亂</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 偏 / 倚</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">3.「香遠益清，</span>＿＿＿＿<span class="read-sentence" onclick="speakSentence(this, event)">，可遠觀而不可褻玩焉」</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 亭亭淨植</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 落英繽紛</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 鬱鬱青青</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 欣欣向榮</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">4.「菊，花之隱逸者也；牡丹，花之富貴者也；蓮，花之</span>＿＿＿＿<span class="read-sentence" onclick="speakSentence(this, event)">者也」</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 隱士</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 君子</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 豪傑</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 賢者</span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- 四、文意理解選擇題 -->
+    <div class="section-title">四、文意理解選擇題 (每題 6 分，共 18 分)</div>
+    <ul class="question-list">
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">1.「出淤泥而不染，濯清漣而不妖」主要象徵君子的哪一種美德？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 潔身自愛，身處汙濁環境仍能保持高潔品德，且不諂媚逢迎</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 隱居山林，遠離喧囂，不問世俗的功名利祿</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 積極求取名利，期望光宗耀祖，實現個人抱負</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 溫和謙遜，擅長社交，在複雜的人際關係中左右逢源</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">2.「中通外直，不蔓不枝」在文中比喻君子的何種處事特質？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 胸懷坦蕩、內心通達，行為端直，且處事專一、不依附權貴拉幫結派</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 才華橫溢，能言善道，在任何場合都能口若懸河</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 身體健康健壯，重視養生之道，追求長壽</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 廣結善緣，朋友遍天下，處處留情、八面玲瓏</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">3.「噫！菊之愛，陶後鮮有聞。蓮之愛，同予者何人？牡丹之愛，宜乎眾矣！」作者在文末發出此感嘆，主要用意為何？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 哀悼與痛惜菊花和蓮花等植物在自然界中日漸凋零、逐漸絕跡</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 藉此感嘆世人大多追逐名利富貴，而能保有高潔君子德行的人極為稀少</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 極力讚美陶淵明的隱逸生活，並表達自己也想要歸隱山林的決心</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 呼籲社會大眾應該要多多種植代表富貴的牡丹花，以帶動經濟繁榮</span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- 五、素養選擇題 -->
+    <div class="section-title">五、素養選擇題 (每題 8 分，第3題 6 分，共 22 分)</div>
+    <ul class="question-list">
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">1. 周敦頤在《愛蓮說》中藉由「蓮花」來寄託自己的志向。這種「託物言志」的寫作手法，與下列哪一首詩歌或文章的表現方式最為相似？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 陸游《卜算子·詠梅》：「零落成泥碾作塵，只有香如故。」（藉梅花冰清玉潔、堅貞不屈的特質，寄託作者個人的高潔志向與愛國情操）</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 李白《靜夜思》：「床前明月光，疑是地上霜。抬頭望明月，低頭思故鄉。」（藉由夜晚明月月光，直接抒發遊子對故鄉的思念）</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 孟浩然《春曉》：「春眠不覺曉，處處聞啼鳥。夜來風雨聲，花落知多少。」（描寫春日早晨的景色，表達對春光的喜愛與惋惜）</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 蘇軾《題西林壁》：「橫看成嶺側成峰，遠近高低各不同。不識廬山真面目，只緣身在此山中。」（藉由遊歷廬山的感受，闡述旁觀者清、當局者迷的哲理）</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">2. 某國中舉辦「現代君子選拔」，主辦單位想用《愛蓮說》中的文句作為宣傳標語。以下哪一個標語與其象徵君子特質的對應，最**不恰當**？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 標語：「出淤泥而不染」——象徵能在不良的社會風氣中保持自我，不受惡劣環境的誘惑與影響</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 標語：「香遠益清，亭亭淨植」——象徵君子的名聲傳播得遠，且品行端正、正直挺拔、令人敬重</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 標語：「可遠觀而不可褻玩焉」——象徵君子性格孤僻冷淡，不願意與世俗的任何人交往與說話</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 標語：「不蔓不枝」——象徵君子處事乾淨俐落，且交友端正，不拉幫結派、阿諛奉承</span></li>
+            </ul>
+        </li>
+        <li class="question-item">
+            <span class="question-text">
+                <span class="read-sentence" onclick="speakSentence(this, event)">3. 閱讀以下關於「蓮」與「荷」的科普短文，並結合《愛蓮說》的內容回答問題：</span><br>
+                <span style="font-size:12.5pt; display:block; margin: 8px 0; border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; background: rgba(0,0,0,0.02);">
+                    <span class="read-sentence" onclick="speakSentence(this, event)">「植物學上，『荷花』與『蓮花』其實是同一種植物（學名：Nelumbo nucifera），而『睡蓮』（學名：Nymphaea）則是不同科的植物。</span>
+                    <span class="read-sentence" onclick="speakSentence(this, event)">荷花（蓮花）的葉子會挺出水面，且葉片表面有微米級的超微細結構，能使水珠聚集成球狀滾落並順便帶走灰塵，這在現代科學中被稱為『蓮花效應（Lotus Effect）』。</span>
+                    <span class="read-sentence" onclick="speakSentence(this, event)">相較之下，睡蓮的葉子則是貼著浮在水面上，沒有這種超微細結構。」</span>
+                </span>
+                <span class="read-sentence" onclick="speakSentence(this, event)">根據這段短文與《愛蓮說》的敘述，下列推論何者最正確？</span>
+                <span class="speaker-icon" onclick="speakQuestion(this)"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></span>
+            </span>
+            <ul class="options-list">
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(A) 周敦頤所讚美的「出淤泥而不染」，其葉面不易沾染泥汙的生理機制，即為現代科學所稱的「蓮花效應」</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(B) 周敦頤在文中描寫「亭亭淨植」，可知他當時觀賞並歌詠的，其實是葉片浮貼在水面上的「睡蓮」</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(C) 從現代植物分類學來看，只要名字裡有「蓮」字的植物（如蓮花、睡蓮），在分類上就是完全相同的植物</span></li>
+                <li class="option-item" onclick="selectOption(this)"><span class="read-sentence" onclick="speakSentence(this, event)">(D) 科學界發現的「蓮花效應」，是因為蓮花長期生長在極度乾旱的陸地上所演化出來的抗旱特徵</span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- 顯示答案按鈕 -->
+    <div class="footer-controls">
+        <button id="toggle-answers-btn" class="btn-large" onclick="toggleAnswers()">顯示答案與詳細解析</button>
+    </div>
+
+    <!-- 答案與解析區 -->
+    <div id="answers-section" class="answers-section" style="display: none;">
+        <h2 class="answers-title">💡 答案與詳細解析</h2>
+        
+        <div class="answer-item">
+            <span class="answer-label">一、國字注音</span>
+            <p>1. 頤：<b>ㄧˊ</b> (周敦頤，宋代理學大師)</p>
+            <p>2. 蕃：<b>ㄈㄢˊ</b> (多、茂盛)</p>
+            <p>3. 淤：<b>ㄩ</b> (水底積存的泥沙)</p>
+            <p>4. 漣：<b>ㄌㄧㄢˊ</b> (水面上的細微波紋)</p>
+            <p>5. 褻：<b>ㄒㄧㄝˋ</b> (輕慢、不莊重)</p>
+        </div>
+
+        <div class="answer-item">
+            <span class="answer-label">二、字詞注釋</span>
+            <p>1. 甚蕃：<b>非常多。</b></p>
+            <p>2. 濯清漣：<b>在清澈的微波中洗滌。濯，洗滌；清漣，清澈的微波。</b></p>
+            <p>3. 不蔓不枝：<b>不蔓延，不分枝。比喻君子處事端正專一，不攀附權貴。</b></p>
+            <p>4. 褻玩：<b>輕慢玩弄。褻，輕慢、不莊重。</b></p>
+            <p>5. 鮮有聞：<b>極少聽到。鮮，少。</b></p>
+        </div>
+
+        <div class="answer-item">
+            <span class="answer-label">三、句子挖空選擇題</span>
+            <p>1. 答案：<b>(A) 淤泥</b><br><span class="explanation">解析：出自課文「予獨愛蓮之出淤泥而不染」，淤泥指水底的爛泥，象徵惡劣、汙濁的世俗環境。</span></p>
+            <p>2. 答案：<b>(B) 蔓 / 枝</b><br><span class="explanation">解析：出自課文「中通外直，不蔓不枝」，比喻君子特質。</span></p>
+            <p>3. 答案：<b>(A) 亭亭淨植</b><br><span class="explanation">解析：出自課文「香遠益清，亭亭淨植，可遠觀而不可褻玩焉」。亭亭，挺拔聳立的樣子；淨植，潔淨地挺立。</span></p>
+            <p>4. 答案：<b>(B) 君子</b><br><span class="explanation">解析：出自課文「蓮，花之君子者也」。周敦頤全篇的核心即在讚美蓮花具有君子的德行。</span></p>
+        </div>
+
+        <div class="answer-item">
+            <span class="answer-label">四、文意理解選擇題</span>
+            <p>1. 答案：<b>(A) 潔身自愛，身處汙濁環境仍能保持高潔品德，且不諂媚逢迎</b><br><span class="explanation">解析：「出淤泥而不染」比喻君子處在惡劣或混亂的環境中，仍能自我約束、保有高潔的品格而不受汙染；「濯清漣而不妖」比喻君子作風莊重，純潔質樸，不諂媚、不逢迎討好他人。</span></p>
+            <p>2. 答案：<b>(A) 胸懷坦蕩、內心通達，行為端直，且處事專一、不依附權貴拉幫結派</b><br><span class="explanation">解析：「中通」比喻君子胸懷通達坦蕩；「外直」比喻君子行為端正正直；「不蔓不枝」比喻君子交友有原則，不攀附權貴、不拉幫結派。</span></p>
+            <p>3. 答案：<b>(B) 藉此感嘆世人大多追逐名利富貴，而能保有高潔君子德行的人極為稀少</b><br><span class="explanation">解析：作者感嘆追求隱逸（菊花/陶淵明）的人在陶淵明後很少聽到；追求君子（蓮花/自己）的更是極少；但追求名利富貴（牡丹/世人）的卻非常多，以此對比暗諷世俗逐名利、遠品德的風氣。</span></p>
+        </div>
+
+        <div class="answer-item">
+            <span class="answer-label">五、素養選擇題</span>
+            <p>1. 答案：<b>(A) 陸游《卜算子·詠梅》：「零落成泥碾作塵，只有香如故。」</b><br><span class="explanation">解析：周敦頤以蓮花特質象徵君子特質，是典型的「託物言志」寫作手法。陸游的《卜算子·詠梅》同樣是藉由梅花凋落成泥也依然保有香氣的自然特質，來寄託詞人即使遭受打擊也誓不與奸臣妥協、堅貞不屈的高潔情操，屬於完全相同的「託物言志」手法。其他選項：(B) 借景抒情 / 直接抒情，(C) 寫景，(D) 藉景說理。</span></p>
+            <p>2. 答案：<b>(C) 標語：「可遠觀而不可褻玩焉」——象徵君子性格孤僻冷淡，不願意與世俗的任何人交往與說話</b><br><span class="explanation">解析：「可遠觀而不可褻玩焉」在文中的象徵意義是君子作風端莊、態度嚴肅，令人敬重，而不敢對其產生輕慢或玩弄的態度，並非形容性格孤僻冷淡或不與人交往。因此 (C) 選項的解說不恰當，為本題答案。</span></p>
+            <p>3. 答案：<b>(A) 周敦頤所讚美的「出淤泥而不染」，其葉面不易沾染泥汙的生理機制，即為現代科學所稱的「蓮花效應」</b><br><span class="explanation">解析：根據短文敘述，「出淤泥而不染」的葉面/花瓣潔淨現象，確實是因為微米級的超微細結構使汙垢與水珠易於滾落的生理機制，即為現代科學的「蓮花效應」，故 (A) 正確。(B) 課文描寫「亭亭淨植」說明其挺立在水中，是荷花（即蓮花），而非睡蓮（睡蓮葉片貼在水面）。(C) 短文已寫睡蓮與荷花在分類上是不同科的植物。(D) 蓮花是水生植物，生長在水澤池塘，非旱地。</span></p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // 語音播放相關變數
+    let synth = window.speechSynthesis;
+    let currentUtterance = null;
+    let currentElement = null;
+    let voices = [];
+    
+    // 初始化語音角色選單
+    function populateVoiceList() {
+        if (typeof speechSynthesis === 'undefined') return;
+        voices = speechSynthesis.getVoices();
+        let voiceSelect = document.getElementById('voice-select');
+        let selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+        voiceSelect.innerHTML = '';
+        
+        // 優先篩選中文與英文語音
+        let filteredVoices = voices.filter(v => v.lang.includes('zh') || v.lang.includes('en'));
+        if (filteredVoices.length === 0) {
+            filteredVoices = voices;
+        }
+        
+        // 按名稱排序
+        filteredVoices.sort((a, b) => a.name.localeCompare(b.name));
+
+        filteredVoices.forEach((voice) => {
+            let option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.setAttribute('data-lang', voice.lang);
+            option.setAttribute('data-name', voice.name);
+            
+            // 嘗試設定預設中文角色
+            if (voice.lang.includes('zh-TW') || voice.lang.includes('zh-HK') || voice.lang.includes('zh-CN')) {
+                if (voice.name.includes('Yating') || voice.name.includes('Hanhan') || voice.name.includes('HsiaoChen') || voice.name.includes('Microsoft')) {
+                    option.selected = true;
+                }
+            }
+            voiceSelect.appendChild(option);
+        });
+        
+        // 更新語速值顯示
+        let rateSlider = document.getElementById('rate-slider');
+        let rateValue = document.getElementById('rate-value');
+        rateSlider.addEventListener('input', () => {
+            rateValue.textContent = rateSlider.value + 'x';
+        });
+    }
+
+    populateVoiceList();
+    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoiceList;
+    }
+
+    // 停止朗讀並清除高亮
+    function stopSpeaking() {
+        if (synth) {
+            synth.cancel();
+        }
+        isReadingAll = false;
+        if (currentElement) {
+            currentElement.classList.remove('speaking-highlight');
+            currentElement = null;
+        }
+    }
+
+    // 暫停朗讀
+    function pauseSpeaking() {
+        if (synth && synth.speaking && !synth.paused) {
+            synth.pause();
+        }
+    }
+
+    // 繼續朗讀
+    function resumeSpeaking() {
+        if (synth && synth.paused) {
+            synth.resume();
+        }
+    }
+
+    // 朗讀單個句子
+    function speakSentence(element, event) {
+        if (event) {
+            event.stopPropagation();
+        }
+        stopSpeaking();
+        
+        let text = element.innerText || element.textContent;
+        // 過濾底線 (＿＿) 與括號 ( (   ) ) 等不需讀出的輔助符號，並避免唸出 "blank"
+        text = text.replace(/[_＿]+/g, ' ').replace(/\(\s*\)/g, ' ');
+        // 清理括號
+        text = text.replace(/[()（）]/g, ' ');
+        
+        if (!text.trim()) return;
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        
+        // 取得所選取的聲音
+        let voiceSelect = document.getElementById('voice-select');
+        if (voiceSelect && voiceSelect.value) {
+            let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+            let selectedName = selectedOption.getAttribute('data-name');
+            let selectedVoice = voices.find(v => v.name === selectedName);
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+        }
+        
+        // 取得語速
+        let rateSlider = document.getElementById('rate-slider');
+        if (rateSlider) {
+            utterance.rate = parseFloat(rateSlider.value);
+        }
+        
+        currentElement = element;
+        currentElement.classList.add('speaking-highlight');
+        
+        utterance.onend = function() {
+            if (currentElement === element) {
+                element.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+        };
+        
+        utterance.onerror = function() {
+            if (currentElement === element) {
+                element.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+        };
+        
+        currentUtterance = utterance;
+        synth.speak(utterance);
+    }
+
+    // 朗讀大題或特定題目的所有可點讀句子
+    function speakQuestion(btn) {
+        stopSpeaking();
+        let questionItem = btn.closest('.question-item');
+        if (!questionItem) return;
+        
+        // 收集該題目項下所有點讀句子
+        let sentences = Array.from(questionItem.querySelectorAll('.read-sentence'));
+        if (sentences.length === 0) return;
+        
+        let idx = 0;
+        function playNext() {
+            if (idx >= sentences.length) {
+                if (currentElement) {
+                    currentElement.classList.remove('speaking-highlight');
+                    currentElement = null;
+                }
+                return;
+            }
+            
+            let el = sentences[idx];
+            let text = el.innerText || el.textContent;
+            text = text.replace(/[_＿]+/g, ' ').replace(/\(\s*\)/g, ' ').replace(/[()（）]/g, ' ');
+            
+            if (!text.trim()) {
+                idx++;
+                playNext();
+                return;
+            }
+            
+            let utterance = new SpeechSynthesisUtterance(text);
+            
+            let voiceSelect = document.getElementById('voice-select');
+            if (voiceSelect && voiceSelect.value) {
+                let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+                let selectedName = selectedOption.getAttribute('data-name');
+                let selectedVoice = voices.find(v => v.name === selectedName);
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+            }
+            
+            let rateSlider = document.getElementById('rate-slider');
+            if (rateSlider) {
+                utterance.rate = parseFloat(rateSlider.value);
+            }
+            
+            if (currentElement) {
+                currentElement.classList.remove('speaking-highlight');
+            }
+            currentElement = el;
+            currentElement.classList.add('speaking-highlight');
+            
+            utterance.onend = function() {
+                idx++;
+                playNext();
+            };
+            
+            utterance.onerror = function() {
+                idx++;
+                playNext();
+            };
+            
+            synth.speak(utterance);
+        }
+        
+        playNext();
+    }
+
+    // 朗讀特定容器內容
+    function speakSectionText(containerId) {
+        stopSpeaking();
+        let container = document.getElementById(containerId);
+        if (!container) return;
+        
+        let sentences = Array.from(container.querySelectorAll('.read-sentence'));
+        if (sentences.length === 0) return;
+        
+        let idx = 0;
+        function playNext() {
+            if (idx >= sentences.length) {
+                if (currentElement) {
+                    currentElement.classList.remove('speaking-highlight');
+                    currentElement = null;
+                }
+                return;
+            }
+            
+            let el = sentences[idx];
+            let text = el.innerText || el.textContent;
+            text = text.replace(/[_＿]+/g, ' ').replace(/\(\s*\)/g, ' ').replace(/[()（）]/g, ' ');
+            
+            if (!text.trim()) {
+                idx++;
+                playNext();
+                return;
+            }
+            
+            let utterance = new SpeechSynthesisUtterance(text);
+            let voiceSelect = document.getElementById('voice-select');
+            if (voiceSelect && voiceSelect.value) {
+                let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+                let selectedName = selectedOption.getAttribute('data-name');
+                let selectedVoice = voices.find(v => v.name === selectedName);
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+            }
+            let rateSlider = document.getElementById('rate-slider');
+            if (rateSlider) {
+                utterance.rate = parseFloat(rateSlider.value);
+            }
+            
+            if (currentElement) {
+                currentElement.classList.remove('speaking-highlight');
+            }
+            currentElement = el;
+            currentElement.classList.add('speaking-highlight');
+            
+            utterance.onend = function() {
+                idx++;
+                playNext();
+            };
+            
+            utterance.onerror = function() {
+                idx++;
+                playNext();
+            };
+            
+            synth.speak(utterance);
+        }
+        playNext();
+    }
+
+    // 朗讀整份考卷
+    let speakQueue = [];
+    let queueIndex = 0;
+    let isReadingAll = false;
+
+    function readAll() {
+        stopSpeaking();
+        isReadingAll = true;
+        
+        // 收集頁面上所有的 .read-sentence，且排除答案解析區
+        let allSentences = Array.from(document.querySelectorAll('.read-sentence'));
+        speakQueue = allSentences.filter(el => !el.closest('#answers-section'));
+        
+        queueIndex = 0;
+        speakNextInQueue();
+    }
+
+    function speakNextInQueue() {
+        if (!isReadingAll || queueIndex >= speakQueue.length) {
+            isReadingAll = false;
+            if (currentElement) {
+                currentElement.classList.remove('speaking-highlight');
+                currentElement = null;
+            }
+            return;
+        }
+        
+        let element = speakQueue[queueIndex];
+        let text = element.innerText || element.textContent;
+        text = text.replace(/[_＿]+/g, ' ').replace(/\(\s*\)/g, ' ').replace(/[()（）]/g, ' ');
+        
+        if (!text.trim()) {
+            queueIndex++;
+            speakNextInQueue();
+            return;
+        }
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        
+        let voiceSelect = document.getElementById('voice-select');
+        if (voiceSelect && voiceSelect.value) {
+            let selectedOption = voiceSelect.options[voiceSelect.selectedIndex];
+            let selectedName = selectedOption.getAttribute('data-name');
+            let selectedVoice = voices.find(v => v.name === selectedName);
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+        }
+        
+        let rateSlider = document.getElementById('rate-slider');
+        if (rateSlider) {
+            utterance.rate = parseFloat(rateSlider.value);
+        }
+        
+        if (currentElement) {
+            currentElement.classList.remove('speaking-highlight');
+        }
+        
+        currentElement = element;
+        currentElement.classList.add('speaking-highlight');
+        
+        // 滾動畫面讓當前朗讀句子置中
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        utterance.onend = function() {
+            element.classList.remove('speaking-highlight');
+            queueIndex++;
+            speakNextInQueue();
+        };
+        
+        utterance.onerror = function() {
+            element.classList.remove('speaking-highlight');
+            queueIndex++;
+            speakNextInQueue();
+        };
+        
+        synth.speak(utterance);
+    }
+
+    // 選擇題選項互動
+    function selectOption(li) {
+        let parent = li.parentNode;
+        parent.querySelectorAll('.option-item').forEach(item => {
+            item.style.fontWeight = 'normal';
+            item.style.backgroundColor = 'transparent';
+        });
+        li.style.fontWeight = 'bold';
+        li.style.backgroundColor = 'rgba(15, 118, 110, 0.1)';
+    }
+
+    // 切換答案與解析
+    function toggleAnswers() {
+        let ansDiv = document.getElementById('answers-section');
+        let btn = document.getElementById('toggle-answers-btn');
+        if (ansDiv.style.display === 'none') {
+            ansDiv.style.display = 'block';
+            btn.innerText = '隱藏答案與詳細解析';
+            btn.style.backgroundColor = '#4b5563';
+            ansDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            ansDiv.style.display = 'none';
+            btn.innerText = '顯示答案與詳細解析';
+            btn.style.backgroundColor = 'var(--accent-color)';
+        }
+    }
+
+    // 切換深淺色主題
+    function toggleTheme() {
+        let htmlEl = document.documentElement;
+        if (htmlEl.getAttribute('data-theme') === 'dark') {
+            htmlEl.removeAttribute('data-theme');
+        } else {
+            htmlEl.setAttribute('data-theme', 'dark');
+        }
+    }
+</script>
+</body>
+</html>
