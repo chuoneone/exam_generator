@@ -67,22 +67,33 @@ description: "當使用者輸入國中數學、國文或英文範圍（例如七
     - **英文空白過濾**：英文題目中的空白（如底線 `________` 或括號內的空格 `(   )`）在朗讀時應以正則表達式直接過濾/替換為空白或略過，不可讀出 "blank"、"underscore" 或是括號讀音，維持句子的連貫與聽讀流暢。例如使用 `text.replace(/[_＿]+/g, ' ').replace(/\(\s*\)/g, ' ')`。
     - 字型設計必須引入特教常用字體，例如 `LXGW WenKai Mono TC` (霞鶩文楷) 或 `Chiron GoRound TC` (迴旋體) 確保字體美觀。
     - 列印時所有控制工具列、點讀虛線下底線、點讀喇叭按鈕等非考卷實體元素皆必須完全隱藏。
+4. **數學公式渲染與點讀音訊協調規則**：
+    - **HTML 數學公式 (KaTeX) 渲染與語音相容性**：
+      - HTML 中的數學公式必須使用 **KaTeX** 來渲染，呈現完美印刷等級的外觀。
+      - 由於 KaTeX 產生的 DOM 樹極其複雜，會導致 Web Speech API (`window.speechSynthesis`) 讀出亂碼或 HTML 標籤，因此凡是包含數學公式的點讀句子或元素，**必須加上 `data-read-text` 屬性**，並在該屬性中填入該公式的自然中文讀音（例如：`<span class="read-sentence" data-read-text="三分之 愛克司 大於等於 一" onclick="...">...</span>`）。
+      - 語音播放引擎在取得朗讀文字時，必須優先檢查元素（或其子元素）是否包含 `data-read-text` 屬性，若有則直接讀取該屬性值，否則才讀取 `innerText`/`textContent`。
+      - 為防止 KaTeX 非同步載入與渲染與語音引擎初始化產生 Race Condition，所有 KaTeX 渲染邏輯（如 `renderMathInElement`）必須在 `DOMContentLoaded` 事件內執行。
+    - **PDF 輸出之 headless 沙盒規則**：
+      - 在將 HTML 轉為 PDF 時，若使用 Headless Edge 或 Chrome 且於沙盒環境執行，必須加上 `--no-sandbox` 參數，確保轉換能順利成功。
 
 ---
 
 ## 檔案輸出規則（PDF、WORD 與 HTML）
-根據使用者設定，直接在專案目錄下生成以下三種檔案：
+根據使用者設定，在專案目錄下新建一個以該考卷命名的資料夾 `[主題/課文名稱]_${count}題_練習卷`，並於該資料夾中同步生成以下三種檔案：
 
 ### 1. 點讀有聲 HTML 檔案 (.html)
 - 包含點讀與喇叭報讀 JS 引擎，結合美觀排版。
-- 命名規格：`[主題/課文名稱]_${count}題_練習卷.html`。
+- 命名規格：`[主題/課文名稱]_${count}題_練習卷/[主題/課文名稱]_${count}題_練習卷.html`。
 
 ### 2. PDF 檔案 (.pdf)
 - 將上述 HTML 考卷轉存為精美的 A4 PDF 檔案。
 - 不可包含瀏覽器預設的頁首與頁尾（加上 `--no-pdf-header-footer` 參數）。
-- 命名規格：`[主題/課文名稱]_${count}題_練習卷.pdf`。
+- 命名規格：`[主題/課文名稱]_${count}題_練習卷/[主題/課文名稱]_${count}題_練習卷.pdf`。
 
 ### 3. Microsoft Word 檔案 (.docx)
 - 產生可在 Word 中直接編輯的原生 `.docx` 格式文件。
-- 字型與配分依照設定編排。數學式以 Unicode 表示，國文科則維持直式或精美欄位排版，提供學生作答框。
-- 命名規格：`[主題/課文名稱]_${count}題_練習卷.docx`。
+- 字型與配分依照設定編排。國文科維持直式或精美欄位排版，提供學生作答框。
+- **數學式 Office Math (OMML) 渲染**：
+  - Word 中的數學公式**不得**以純文字、Unicode 或 LaTeX 代碼直接寫入。
+  - 必須將數學公式編譯為符合 `http://schemas.openxmlformats.org/officeDocument/2006/math` 命名空間的 **Office Math XML (OMML)** 結構（以 `<m:oMath>` 或 `<m:oMathPara>` 包裹之 XML 節點），並使用 `python-docx` 的 `parse_xml` 將其動態插入段落中，使公式在 Word 內呈現漂亮、原生且可編輯的微軟數學公式。
+- 命名規格：`[主題/課文名稱]_${count}題_練習卷/[主題/課文名稱]_${count}題_練習卷.docx`。
