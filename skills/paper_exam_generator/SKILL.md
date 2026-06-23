@@ -56,6 +56,7 @@ description: "當使用者輸入國中數學、國文或英文範圍（例如七
      ```html
      <span class="read-sentence" onclick="speakSentence(this, event)">這是一段可以被點讀的課文句子。</span>
      ```
+   - **底線斷句規則**：若英文或國文題目中包含底線（如 `________` 或 `___`），底線本身**不應**被包裹在 `.read-sentence` 點讀標籤內。底線必須作為分句的斷點，將前後文字拆分為獨立的 `.read-sentence` 點讀區塊（例如 `The boy ________ basketball` 應拆分為 `<span class="read-sentence" onclick="speakSentence(this, event)">The boy</span> ________ <span class="read-sentence" onclick="speakSentence(this, event)">basketball</span>`）。這樣在點讀或朗讀時，遇到底線時就會自然斷開，提供更好的停頓與思考填空效果。
 2. **點讀互動樣式**：
    - 滑鼠懸停於可點讀句子上時，指針變為手型 (`cursor: pointer`)，並加上藍色虛線下底線。
    - 被點擊點讀的句子，在朗讀期間應加上黃色背景高亮顯示（類別：`.speaking-highlight { background-color: #fef08a; }`），朗讀結束後自動移除高亮。
